@@ -1,0 +1,41 @@
+version: 2
+
+# unique or not null are required, using meta testing package to confirm we have these at the schema level
+models:
+  - name: stg_raw_hosts
+    description: stage table for raw hosts, aliases have nee added as needed.
+    columns:
+      - name: host_id
+        description: primary key, one value for each host, aliases have nee added as needed.
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_raw_listings
+    description: stage table for listings, aliases have nee added as needed.
+    columns:
+      - name: listing_id
+        description: primary key.
+        tests:
+          - unique
+          - not_null
+
+      - name: room_type
+        tests:
+          - accepted_values: 
+              values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
+
+      - name: minimum_nights
+        description: must be positive value
+        tests:
+          - positive_value:
+                config:
+                  severity: warn
+                  
+  - name: stg_raw_reviews
+    description: stage table for reviews, aliases added as needed.
+    columns: 
+      - name: listing_id
+        description: listing id is not unique here as one listing can have many reviews but should not be null.
+        tests:
+          - not_null 

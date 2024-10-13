@@ -1,0 +1,89 @@
+version: 2
+
+# intermediate tables testing: unique or not null are required, using meta testing package to confirm we have these at the schema level
+models:
+
+# dim testing
+  - name: int_dim_host_clean
+    description: intermediate cleaning for host dimension.
+    columns:
+      - name: host_id
+        description: primary key, one value for each host, aliases have nee added as needed. 
+        tests:
+          - unique
+          - not_null
+
+  - name: int_dim_listings_clean
+    description: intermediate cleaning for listing dimension
+    columns:
+      - name: listing_id
+        description: primary key.
+        tests:
+          - unique
+          - not_null
+
+      - name: host_id
+        description: foreign key to int_dim_host_clean
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('int_dim_host_clean')
+              field: host_id
+
+    
+
+# fact testing
+  - name: int_fct_reviews_clean
+    description: intermediate cleaning for review fact table.
+    columns: 
+      - name: listing_id
+        description: listing id is not unique here as one listing can have many reviews but should not be null. Relationship should be tested.
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('int_dim_listings_clean')
+              field: listing_id
+
+      - name: review_date
+        description: The date of the review. 
+        tests:
+          - not_null 
+
+      - name: reviewer_name
+        description: listing id is not unique here as one listing can have many reviews but should not be null. 
+        tests:
+          - not_null 
+
+      - name: review_text
+        description: A short text description aboput the customer experience. 
+        tests:
+          - not_null
+
+      - name: review_sentiment
+        description: The review sentiment as labeled. Test values.
+        tests:
+          - not_null  
+
+
+# scd testing
+  - name: int_scd_raw_hosts
+    description: intermediate cleaning for host dimension.
+    columns:
+      - name: host_id
+        description: primary key, this is not unique as the hist is captured.. 
+        tests:
+          - not_null
+
+  - name: int_scd_raw_listings
+    description: intermediate slowly changing dimension for listing, designed to CDC
+    columns:
+      - name: listing_id
+        description: primary key, this is not unique as the hist is captured.
+        tests:
+          - not_null
+
+      - name: minimum_nights
+        description: shows the minimun stay require, must be at least 1.
+        tests:
+          - positive_value
+        

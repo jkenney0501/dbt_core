@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: airbnb
+    database: airbnb
+    schema: raw
+
+    tables:
+      - name: raw_hosts
+        description: host information table from source database.
+        columns:
+          - name: id
+            description: raw_host primary key
+            # test sources for not null nad uniqeness where applicable
+            tests:
+              - unique   
+              - not_null
+
+      - name: raw_listings
+        description: listing information table from source database.
+        columns:
+          - name: id 
+            description: primary key for listings table.
+            tests:
+              - unique   
+              - not_null
+
+          - name: room_type
+            tests:
+              - accepted_values: 
+                  values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
+          
+                     
+
+      - name: raw_reviews
+        description: reviews table from source database.
+        # add source freshness block
+        freshness:
+            warn_after: {count: 1, period: day} # using only warn given this is a demo and throwing errors is not needed every run
+        loaded_at_field: date
+        columns:
+          - name: listing_id
+            description: primary key for listings.
+            tests: 
+              - not_null

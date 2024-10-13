@@ -135,7 +135,7 @@ where review_text is not null
 
 All tests are applied on this model. Gneric testing is compleetd in each schema/yml file with some thrid party packaging such as metea_testing rto enure we have the required generic tests for some models.
 
-*Typixcally, I test all sources first, I add generic tests to my source.yml as an example:*
+*Typically, I test all sources first, I add generic tests to my source.yml as an example:*
 
 <img title="airbnb erd" alt="Alt text" src="assets/generic_source_tests.png">
 

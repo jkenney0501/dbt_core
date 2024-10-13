@@ -1,4 +1,4 @@
--- custome test
+-- custom test
 -- test for greater tahn zero values in a column
 -- can be called as a generic test in your schema.yml
 

@@ -30,8 +30,6 @@ sources:
               - accepted_values: 
                   values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
           
-                     
-
       - name: raw_reviews
         description: reviews table from source database.
         # add source freshness block

@@ -182,7 +182,33 @@ packages:
   - package: dbt-labs/dbt_utils
     version: 1.3.0
 ```
+To set the meta test at the schema level, configure it in the dbt project.yml under models:
 
+```yml
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+models:
+  dbt_learn_core:
+    # leaving default view for stage and intermediate models
+    stage:
+      +required_tests: {"unique.*|not_null": 1}
+    core:
+      int:
+        +required_tests: {"unique.*|not_null": 1}
+      dim:
+        +materialized: table
+      fct:
+        +materialized: table
+
+seeds:
+  dbt_learn_core:
+  +schema: seed_data
+
+```
 
 
 ## Documentaion

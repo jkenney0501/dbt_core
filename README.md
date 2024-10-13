@@ -18,7 +18,7 @@ The various layers applied in three phases and are as follows:
 
 - **stage:** ingests the raw data, does light transformations and adds aliases as needed.
 
-- **core:** The core layers holds the breakout for the star scjema and also the intermediate layer of the pipeline where the larger transformations take place before being referenced by the prod models for dimension or fact.
+- **core:** The core layers holds the breakout for the star schema and also the intermediate layer of the pipeline where the larger transformations take place before being referenced by the prod models for dimension or fact.
 
   - **intermediate**
     - **incremental:** to capture new data in increments to a fact table.
@@ -79,7 +79,7 @@ select *
 from scd_hosts_transformed
 ```
 
-The fact table is materailzed as incremental for demonstration purpose as it would typically just be a fresh rebuild given its size. Howevere, this fact is set up to run ion three diffeent jobs, slim CI for changes, standard daily deploy to capture new data and a full refresh weekly to make sure no increments have been missed.
+The fact table is materialized as incremental for demonstration purpose as it would typically just be a fresh rebuild given its size. However, this fact is set up to run on three different jobs, slim CI for changes, standard daily deploy to capture new data and a full refresh weekly to make sure no increments have been missed.
 
 Example of the incremental output:
 

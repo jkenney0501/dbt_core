@@ -207,7 +207,7 @@ Here is a wuick overview of the model lineage that the code produces.
 
 
 ### Conclusion:
-Building pipelines is a lot of work. It requyires a meticuous and patitent outlook wiht a lot of foresight. A pipeline spec document is always a great idea to capture the various angles an basic layouts of the design with your stakeholders. 
+Building pipelines is a lot of work. It requires a meticulous and patitent outlook wiht a lot of foresight. A pipeline spec document is always a great idea to capture the various angles an basic layouts of the design with your stakeholders. 
 
-Most importantly thouigh, build robust tests! This the core of dbt so use it to your advantage. For docs in production, I use confluence as I tend to use dbt cloud exclusively and it makes storing assets a bit difficult. Confluence is easier imo to store and index all your project docs while linking to your repo.
+Most importantly though, build robust tests! This the core of dbt so use it to your advantage. For docs in production, I use confluence as I tend to use dbt cloud exclusively and it makes storing assets a bit difficult. Confluence is easier imo to store and index all your project docs while linking to your repo.
 

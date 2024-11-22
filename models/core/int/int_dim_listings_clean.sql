@@ -1,4 +1,3 @@
-
 -- intermediate model to clean to prep for the dim listings table
 with dim_listings_clean as(
 

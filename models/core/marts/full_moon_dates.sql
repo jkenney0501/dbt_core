@@ -10,7 +10,7 @@
 WITH fct_reviews AS (
 
         SELECT * 
-        FROM {{ ref('int_fct_reviews_clean') }}
+        FROM {{ ref('fct_reviews') }}
 
 ),
 

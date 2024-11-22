@@ -110,4 +110,3 @@ select * from AIRBNB.RAW.RAW_REVIEWS limit 20;
 
 
 clear
-

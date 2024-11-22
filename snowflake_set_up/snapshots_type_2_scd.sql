@@ -88,16 +88,3 @@ from AIRBNB.DEV_SNAPSHOTS.SCD_RAW_HOSTS
 select *
 from AIRBNB.DEV.INT_SCD_RAW_HOSTS
 where host_id = 1581
-
-
-
-
-
-
-
-
-
-
-
-
-

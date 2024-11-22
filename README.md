@@ -8,7 +8,7 @@ All is documented as well.
 
 Below is the basic star schema created. The model includes a seed to test a hypothsis (which is not done here but built for such purposes downstream as is the usual for DE pipelines).
 
-<img title="airbnb erd" alt="Alt text" src="assets/Airbnb ERD.png">
+<img title="airbnb erd" alt="Alt text" src="assests\Airbnb ERD (1).png">
 
 ## dbt models
 
@@ -30,9 +30,9 @@ The various layers applied in three phases and are as follows:
   - **fct:** to capture measured business processes.
 
 #### SCD Type 2
-<img title="airbnb erd" alt="Alt text" src="assets/scd_type_2_1.png">
+<img  src="assests\scd_type_2_1.png">
 
-<img title="airbnb erd" alt="Alt text" src="assets/scd2_2.png">
+<img  src="assests\scd2_2.png">
 
 SCD Type 2 code example:
 
@@ -83,7 +83,7 @@ The fact table is materialized as incremental for demonstration purpose as it wo
 
 Example of the incremental output:
 
-<img title="airbnb erd" alt="Alt text" src="assets/incremental_model.png">
+<img title="airbnb erd" alt="Alt text" src="assests\incremental_model.png">
 
 Incremental code:
 
@@ -229,7 +229,7 @@ dbt docs generate
 ### Overview/Pipeline Lineage
 Here is a wuick overview of the model lineage that the code produces.
 
-<img title="airbnb erd" alt="Alt text" src="assets/lineage_graph.png">
+<img title="airbnb erd" alt="Alt text" src="assests\lineage_graph.png">
 
 
 ### Conclusion:

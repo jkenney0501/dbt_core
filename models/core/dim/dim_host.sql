@@ -1,5 +1,5 @@
 -- prod host dimension
-
+-- chnage to pull from scd where is_current =1
 with dim_host_final as(
 
     select *

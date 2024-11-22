@@ -4,4 +4,3 @@
 {{
     no_nulls_in_columns( ref('int_dim_listings_clean') )
 }}
-

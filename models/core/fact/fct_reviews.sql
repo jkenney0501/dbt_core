@@ -1,15 +1,15 @@
-
--- fact table for reviews
--- model is incremental
-
+-- prod fact table
+-- this runs only after the audit passeses tests
+-- this  done so we only test new data and a small amount at a time.
 {{
     config(
         materialized ='incremental',
         on_schema_change='fail',
-        schema = 'int_incrementals'
+        schema = 'incrementals'
     )
 }}
 
+    
 
 with fact_reviews_cleaned as(
 
@@ -18,6 +18,7 @@ with fact_reviews_cleaned as(
         {{ ref('stg_raw_reviews') }}
 
 )
+
 
 select 
 {{ dbt_utils.generate_surrogate_key(['listing_id', 'review_date', ' reviewer_name', ' review_text']) }} as listing_surrogate_key,
